@@ -1,0 +1,11 @@
+username - iNotebook
+
+Password - gRvIo6aVt4BxHR5V
+
+String - 
+mongodb+srv://iNotebook:PxF2Gij3vP1X5D4H@cluster0.6kuhf.mongodb.net/iNotebook?retryWrites=true&w=majority
+
+
+"both": "concurrently \"npm run dev\" \"nodemon ./backend/index.js\""
+
+React Playlist last watched - Video No. #71
