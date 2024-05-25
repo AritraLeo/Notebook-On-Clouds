@@ -13,13 +13,21 @@ const NotesSchema = new Schema({
     },
     description: {
         type: String,
-        required: true 
+        required: true
+    },
+    status: {
+        type: String,
+        default: 'in-progress'
     },
     tag: {
         type: String,
         default: 'General'
     },
-    data: {
+    dueDate: {
+        type: Date,
+        default: Date.now
+    },
+    date: {
         type: Date,
         default: Date.now
     }

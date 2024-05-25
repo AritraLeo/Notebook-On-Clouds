@@ -44,7 +44,7 @@ const SignUp = (props) => {
                 {/* Name */}
                 <div className="form-group">
                     <label htmlFor="exampleInputPassword1">Name</label>
-                    <input type="text" value={signup.name} required minLength={3} onChange={onChange} name='name' className="form-control" id="name" placeholder="Password" />
+                    <input type="text" value={signup.name} required minLength={3} onChange={onChange} name='name' className="form-control" id="name" placeholder="Name" />
                 </div>
 
                 {/* Email */}

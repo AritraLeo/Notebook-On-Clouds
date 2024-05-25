@@ -8,7 +8,7 @@ const Notes = () => {
 
     const context = useContext(noteContext);
     const { notes, getNotes, editNote } = context;
-    const [note, setNote] = useState({ id: '', etitle: '', edescription: '', etag: 'default' });
+    const [note, setNote] = useState({ id: '', etitle: '', edescription: '', etag: 'default', estatus: '', edueDate: '' });
 
     const ref = useRef(null);
     const refClose = useRef(null);
@@ -17,12 +17,12 @@ const Notes = () => {
 
     const updateNote = (currentNote) => {
         ref.current.click();
-        setNote({ id: currentNote._id, etitle: currentNote.title, edescription: currentNote.description, etag: currentNote.tag })
+        setNote({ id: currentNote._id, etitle: currentNote.title, edescription: currentNote.description, etag: currentNote.tag, estatus: currentNote.status, edueDate: currentNote.dueDate })
     }
 
     const handleClick = (e) => {
         e.preventDefault();
-        editNote(note.id, note.etitle, note.edescription, note.etag);
+        editNote(note.id, note.etitle, note.edescription, note.etag, note.estatus, note.edueDate);
         refClose.current.click();
     }
 
@@ -76,6 +76,35 @@ const Notes = () => {
                                             <label>Tag</label>
                                             <input type="text" className="form-control" id="etag" name='etag' value={note.etag} placeholder="Tag" onChange={onChange} />
                                         </div>
+                                        {/* Status */}
+                                        <div className="form-group">
+                                            <label htmlFor="estatus">Status</label>
+                                            <select
+                                                className="form-control"
+                                                id="estatus"
+                                                name="estatus"
+                                                value={note.estatus}
+                                                onChange={onChange}
+                                            >
+                                                <option value="pending">Pending</option>
+                                                <option value="in-progress">In Progress</option>
+                                                <option value="completed">Completed</option>
+                                            </select>
+                                        </div>
+                                        {/* Due Date */}
+                                        <div className="form-group">
+                                            <label htmlFor="edueDate">Due Date</label>
+                                            <input
+                                                type="date"
+                                                className="form-control"
+                                                id="edueDate"
+                                                name="edueDate"
+                                                value={note.edueDate}
+                                                onChange={onChange}
+                                            />
+                                        </div>
+
+
 
                                     </form>
                                 </div>

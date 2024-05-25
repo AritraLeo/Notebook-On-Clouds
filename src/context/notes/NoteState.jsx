@@ -28,7 +28,7 @@ const NoteState = (props) => {
 
 
     // Add
-    const addNote = async (title, description, tag) => {
+    const addNote = async (title, description, tag, status, dueDate) => {
 
         const response = await fetch(`${host}/api/notes/addnote`, {
             method: 'POST',
@@ -37,7 +37,7 @@ const NoteState = (props) => {
                 'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjI2NGNkMjk5YmU3YzM0ODQ1MTE1MTQ4In0sImlhdCI6MTY1MDc3MzU2MX0.eY0DQm32--ct4KPM3ypvgWtz5Nig6dS_6mm5fqVs0aU'
                 // 'Content-Type': 'application/x-www-form-urlencoded',
             },
-            body: JSON.stringify({ title, description, tag }) // body data type must match "Content-Type" header
+            body: JSON.stringify({ title, description, tag, status, dueDate }) // body data type must match "Content-Type" header
         });
         const note = await response.json();
 
@@ -66,7 +66,7 @@ const NoteState = (props) => {
     }
 
     // Edit
-    const editNote = async (id, title, description, tag) => {
+    const editNote = async (id, title, description, tag, status, dueDate) => {
         //  Api call :
 
         const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
@@ -76,7 +76,7 @@ const NoteState = (props) => {
                 'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjI2NGNkMjk5YmU3YzM0ODQ1MTE1MTQ4In0sImlhdCI6MTY1MDc3MzU2MX0.eY0DQm32--ct4KPM3ypvgWtz5Nig6dS_6mm5fqVs0aU'
                 // 'Content-Type': 'application/x-www-form-urlencoded',
             },
-            body: JSON.stringify({ title, description, tag }) // body data type must match "Content-Type" header
+            body: JSON.stringify({ title, description, tag, status, dueDate }) // body data type must match "Content-Type" header
         });
         const json = await response.json();   // parses JSON response into native JavaScript objects
 
@@ -89,6 +89,8 @@ const NoteState = (props) => {
                 newNotes[index].title = title;
                 newNotes[index].description = description;
                 newNotes[index].tag = tag;
+                newNotes[index].status = status;
+                newNotes[index].dueDate = dueDate;
                 break;
             }
         }

@@ -5,6 +5,15 @@ const Navbar = () => {
 
     const location = useLocation();
 
+    const handleLogout = () => {
+        // Remove the JWT token from localStorage
+        localStorage.removeItem('token');
+
+        // Redirect to the login page
+        window.location.href = '/login';
+    };
+
+
     useEffect(() => {
 
         console.log(location.pathname);
@@ -28,6 +37,9 @@ const Navbar = () => {
                     </li>
                 </ul>
             </div>
+            <button onClick={handleLogout} className="btn btn-danger">
+                Logout
+            </button>
             <Link to='/login' className='btn btn-primary mx-2'> Login </Link>
             <Link to='/signup' className='btn btn-primary mx-2'> SignUp </Link>
         </nav>
